@@ -20,21 +20,20 @@ public class UniqueNumbers {
         int[] uniqueNumbers = new int[numbers.length];
         // Find unique numbers in numbers
 
-        bubbleSort(numbers);
+        // bubbleSort(numbers);
 
-        int j = 0;
         int br = 0;
-        int counter = 0;
-        for(int i = 1; i < numbers.length; i++) {
-          if(numbers[j] != numbers[i]) {
-            uniqueNumbers[br] = numbers[j];
-            j = i;
+        for(int i = 0; i < numbers.length; i++) {
+          boolean duplicated = false;
+          for(int j = 0; j < uniqueNumbers.length; j++) {
+            if(uniqueNumbers[j] == numbers[i]) {
+              duplicated = true;
+            }
+          }
+          if(!duplicated) {
+            uniqueNumbers[br] = numbers[i];
+            duplicated = false;
             br++;
-            counter = 0;
-          } 
-          counter++;
-          if(i == (numbers.length - 1) && counter != 0) {
-            uniqueNumbers[br] = numbers[j];
           }
         }
 
@@ -42,21 +41,21 @@ public class UniqueNumbers {
         System.out.println("Unique numbers: " + uniqueNumbersAsString);
     }
 
-    static void bubbleSort(int[] array) {
-            boolean swapped = true;
-            int j = 0;
-            int tmp;
-            while (swapped) {
-                swapped = false;
-                j++;
-                for (int i = 0; i < array.length - j; i++) {
-                    if (array[i] > array[i + 1]) {
-                        tmp = array[i];
-                        array[i] = array[i + 1];
-                        array[i + 1] = tmp;
-                        swapped = true;
-                    }
-                }
-            }
-        }
+    // static void bubbleSort(int[] array) {
+    //         boolean swapped = true;
+    //         int j = 0;
+    //         int tmp;
+    //         while (swapped) {
+    //             swapped = false;
+    //             j++;
+    //             for (int i = 0; i < array.length - j; i++) {
+    //                 if (array[i] > array[i + 1]) {
+    //                     tmp = array[i];
+    //                     array[i] = array[i + 1];
+    //                     array[i + 1] = tmp;
+    //                     swapped = true;
+    //                 }
+    //             }
+    //         }
+    //     }
 }
